@@ -1,0 +1,6 @@
+interface:
+  display_name: "State Machine Task"
+  short_description: "Run one explicitly selected task with a Beads graph"
+  default_prompt: "Use $state-machine-task to manage this task as a state machine, own its graph, and verify each transition."
+policy:
+  allow_implicit_invocation: true
