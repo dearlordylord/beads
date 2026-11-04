@@ -1,6 +1,6 @@
 ---
 name: state-machine-task
-description: Use only when the user explicitly invokes this skill or explicitly asks to execute a selected task as a state machine with a maintained Beads graph. Continue that selected task within its existing authorization. Do not activate for ordinary coding, a request to explain or draw a statechart, or merely finding open beads.
+description: Use when the user asks to execute a selected task as a state machine and maintain its work graph, including natural-language requests such as “run this task as a state machine”, “веди задачу как машину состояний”, or “выполняй через граф состояний”. The skill name and Beads name are not required. Also use for explicit skill invocation and continuation of that authorized task. Do not activate for ordinary coding or iterative debugging, merely mentioning a state machine, explaining or drawing a statechart, or merely finding open beads.
 ---
 
 # State Machine Task
@@ -8,6 +8,19 @@ description: Use only when the user explicitly invokes this skill or explicitly 
 Own the selected task from graph construction through evidence-based completion.
 Beads (`bd`) stores the issue graph; you decide, execute, verify, and maintain it.
 Dependencies determine ready work. They do not launch agents or enforce acceptance.
+
+## Recognize natural-language invocation
+
+An explicit request for the mode does not require `$state-machine-task` or the
+word Beads. Select this skill when the user asks you to execute the selected task
+as a state machine and own its work graph, dependencies, or checked transitions.
+Examples include “веди эту задачу как машину состояний и поддерживай граф” and
+“выполняй через граф состояний, сохраняй зависимости и текущее состояние”.
+
+“Покажи пока что это как state machine” asks for a diagram, not execution in this
+mode. “Наращивай диалог итеративно” asks for iterative work but does not select
+graph management. Neither activates this skill by itself. If the user requests
+execution only after reviewing a diagram, respect that boundary.
 
 ## Establish scope
 

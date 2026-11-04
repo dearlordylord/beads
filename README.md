@@ -32,8 +32,9 @@ verification; Beads retains the dependency graph across sessions. Upstream CLI,
 storage, and setup behavior are unchanged.
 
 Install only `integrations/skills/state-machine-task/` through your client's
-per-project skill mechanism, then invoke `$state-machine-task` with the task and
-its acceptance criteria. It requires an available `bd` CLI and an initialized
+per-project skill mechanism, then request “run this task as a state machine and
+maintain its work graph” with the task and its acceptance criteria, or invoke
+`$state-machine-task`. It requires an available `bd` CLI and an initialized
 workspace. This repository does not install either automatically.
 
 For a new workspace, check `bd init --help` for `--skip-agents` and
@@ -45,8 +46,12 @@ reinitialize an existing workspace to add this skill.
 
 Do not use `bd setup codex` to install this variant: that command configures the
 broader upstream integration. Do not install the stock `beads` skill alongside it
-if you need this mode's explicit activation boundary. Codex metadata disables
-implicit invocation; other clients must provide an equivalent activation control.
+if you need this mode's explicit activation boundary. Codex metadata allows
+selection by natural-language requests; the skill requires a request to execute
+the selected task through a maintained graph. Other clients need equivalent
+skill discovery support. Requests only to explain or draw a state machine do not
+select execution mode.
+
 The skill instructions alone are not a hard scheduler or resource limit.
 
 ## ⚡ Quick Start
