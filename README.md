@@ -24,6 +24,31 @@ flowchart LR
     depgraph <-->|"bd dolt push / pull"| remote[("other machines<br/>and agents")]
 ```
 
+## Explicit state-machine task skill (fork addition)
+
+This fork adds [state-machine-task](integrations/skills/state-machine-task/SKILL.md),
+a Codex skill for one explicitly selected task. The assistant owns execution and
+verification; Beads retains the dependency graph across sessions. Upstream CLI,
+storage, and setup behavior are unchanged.
+
+Install only `integrations/skills/state-machine-task/` through your client's
+per-project skill mechanism, then invoke `$state-machine-task` with the task and
+its acceptance criteria. It requires an available `bd` CLI and an initialized
+workspace. This repository does not install either automatically.
+
+For a new workspace, check `bd init --help` for `--skip-agents` and
+`--skip-hooks`, then initialize with `bd init --skip-agents --skip-hooks`.
+These flags avoid generated agent integrations and Git hook installation;
+initialization still creates workspace data and can perform Git operations.
+Inspect the installed version's help and repository configuration first. Do not
+reinitialize an existing workspace to add this skill.
+
+Do not use `bd setup codex` to install this variant: that command configures the
+broader upstream integration. Do not install the stock `beads` skill alongside it
+if you need this mode's explicit activation boundary. Codex metadata disables
+implicit invocation; other clients must provide an equivalent activation control.
+The skill instructions alone are not a hard scheduler or resource limit.
+
 ## ⚡ Quick Start
 
 ```bash
